@@ -66,7 +66,7 @@ export function registerListCommand() {
     )
     .option(
       "-p, --pubkey <npub:string>",
-      "The public key to list files for (npub, hex, or NIP-05 identifier like name@domain.com).",
+      "The public key to list files for (npub, hex, or NIP-05 identifier like name@domain.com, or Namecoin .bit identifier like name@example.bit or d/example).",
     )
     .option(
       "-d, --name <name:string>",

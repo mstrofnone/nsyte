@@ -28,7 +28,7 @@ nsyte ls   [path] [options]   # alias
   from project config or default discovery relays
 - `--sec <secret>` — Secret for signing (auto-detects: nsec, nbunksec, bunker://, hex)
 - `--prompt-sec` — Prompt for the signing secret at runtime instead of `--sec` (keeps it out of shell history)
-- `-p, --pubkey <npub>` — The public key to list files for (npub, hex, or NIP-05)
+- `-p, --pubkey <npub>` — The public key to list files for (npub, hex, NIP-05 like `name@domain.com`, or Namecoin `.bit` identifier like `name@example.bit` or `d/example`)
 - `-d, --name <name>` — Site identifier for named sites. If not provided, lists root site
 - `--use-fallback-relays` — Include default nsyte relays in addition to configured relays
 - `--use-fallbacks` — Enable all fallback options (relays)

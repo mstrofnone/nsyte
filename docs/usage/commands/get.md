@@ -27,8 +27,7 @@ nsyte get <remote-path> [options]
 - `-o, --output <file>` — Write the downloaded file to disk instead of stdout
 - `-r, --relays <relays>` — The nostr relays to use (comma separated)
 - `-s, --servers <servers>` — The blossom servers to try first (comma separated)
-- `-p, --pubkey <npub>` — The public key to download from (npub, hex, or NIP-05 identifier like
-  `name@domain.com`)
+- `-p, --pubkey <npub>` — The public key to download from (npub, hex, or NIP-05 identifier like `name@domain.com`, or Namecoin `.bit` identifier like `name@example.bit` or `d/example`)
 - `-d, --name <name>` — The site identifier for named sites (kind 35128). If not provided, uses the
   root site (kind 15128)
 

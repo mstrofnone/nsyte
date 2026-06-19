@@ -50,7 +50,7 @@ export function registerDownloadCommand(): void {
     )
     .option(
       "-p, --pubkey <npub:string>",
-      "The public key to download files from (npub, hex, or NIP-05 identifier like name@domain.com).",
+      "The public key to download files from (npub, hex, or NIP-05 identifier like name@domain.com, or Namecoin .bit identifier like name@example.bit or d/example).",
     )
     .option(
       "-d, --name <name:string>",

@@ -1,5 +1,6 @@
 import { normalizeToPubkey } from "applesauce-core/helpers";
 import { createLogger } from "./logger.ts";
+import { isNamecoinIdentifier, resolveNamecoinNip05 } from "./namecoin/index.ts";
 
 const log = createLogger("nip05");
 
@@ -230,6 +231,28 @@ export async function normalizePubkeyInput(input: string): Promise<string> {
     );
   }
 
+  // Check if it's a Namecoin `.bit` / `d/` / `id/` identifier before
+  // the DNS NIP-05 path — both surfaces share the user@domain shape,
+  // so the `.bit` test must run first to avoid a useless DNS lookup
+  // against a non-existent `*.bit` domain.
+  if (isNamecoinIdentifier(trimmed)) {
+    log.debug(`Attempting Namecoin NIP-05 resolution for: ${trimmed}`);
+    const result = await resolveNamecoinNip05(trimmed);
+    if (result) {
+      log.debug(
+        `Successfully resolved Namecoin ${trimmed} to ${result.pubkey.slice(0, 8)}...`,
+      );
+      return result.pubkey.toLowerCase();
+    }
+    throw new Error(
+      `Failed to resolve Namecoin NIP-05 identifier: ${trimmed}\n` +
+        `Please check:\n` +
+        `  - The identifier is correct (e.g., "alice@example.bit", "example.bit", "d/example", "id/alice")\n` +
+        `  - The name is registered and unexpired on the Namecoin chain\n` +
+        `  - At least one of the bundled ElectrumX servers is reachable`,
+    );
+  }
+
   // Check if it's a NIP-05 identifier (including shortcuts)
   if (isNip05Identifier(trimmed)) {
     // Normalize shortcuts (@domain.com or domain.com) to _@domain.com
@@ -256,7 +279,8 @@ export async function normalizePubkeyInput(input: string): Promise<string> {
       `Expected one of:\n` +
       `  - npub (e.g., "npub1...")\n` +
       `  - hex (64-character hex string)\n` +
-      `  - NIP-05 identifier (e.g., "name@domain.com", "@domain.com", or "domain.com")`,
+      `  - NIP-05 identifier (e.g., "name@domain.com", "@domain.com", or "domain.com")\n` +
+      `  - Namecoin NIP-05 identifier (e.g., "alice@example.bit", "example.bit", "d/example", "id/alice")`,
   );
 }
 

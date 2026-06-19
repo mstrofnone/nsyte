@@ -29,8 +29,7 @@ nsyte status [path] [options]
   64-char hex)
 - `--prompt-sec` — Prompt for the signing secret at runtime instead of
   `--sec` (keeps it out of shell history)
-- `-p, --pubkey <npub>` — The public key to inspect (npub, hex, or NIP-05 identifier like
-  `name@domain.com`)
+- `-p, --pubkey <npub>` — The public key to inspect (npub, hex, or NIP-05 identifier like `name@domain.com`, or Namecoin `.bit` identifier like `name@example.bit` or `d/example`)
 - `-d, --name <name>` — The site identifier for named sites (kind 35128). If not provided, inspects
   the root site (kind 15128)
 - `--no-config` — Ignore config file and use only CLI arguments (default: `false`)

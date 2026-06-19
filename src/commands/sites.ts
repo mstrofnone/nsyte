@@ -66,7 +66,7 @@ export function registerSitesCommand() {
     )
     .option(
       "-p, --pubkey <npub:string>",
-      "The public key to list sites for (npub, hex, or NIP-05 identifier like name@domain.com).",
+      "The public key to list sites for (npub, hex, or NIP-05 identifier like name@domain.com, or Namecoin .bit identifier like name@example.bit or d/example).",
     )
     .option(
       "--use-fallback-relays",

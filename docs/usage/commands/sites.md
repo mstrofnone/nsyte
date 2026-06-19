@@ -17,11 +17,11 @@ nsyte sites [options]
 
 - `-r, --relays <relays>` — Nostr relays to query (comma-separated)
 - `--sec <secret>` — Secret for signing (auto-detects: nsec, nbunksec, bunker://, hex)
-- `-p, --pubkey <npub>` — Public key to list sites for (npub, hex, or NIP-05 identifier like
-  `name@domain.com`)
+- `-p, --pubkey <npub>` — Public key to list sites for (npub, hex, NIP-05 identifier like
+  `name@domain.com`, or Namecoin `.bit` identifier like `name@example.bit` or `d/example`)
 - `--prompt-sec` — Prompt for the signing secret at runtime instead of `--sec` (keeps it out of shell history)
-- `-p, --pubkey <npub>` — Public key to list sites for (npub, hex, or NIP-05 identifier like
-  `name@domain.com`)
+- `-p, --pubkey <npub>` — Public key to list sites for (npub, hex, NIP-05 identifier like
+  `name@domain.com`, or Namecoin `.bit` identifier like `name@example.bit` or `d/example`)
 - `--use-fallback-relays` — Include default nsyte relays in addition to configured relays
 - `--use-fallbacks` — Enable all fallback options (relays)
 

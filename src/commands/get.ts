@@ -86,7 +86,7 @@ export function registerGetCommand(): void {
     .option("-s, --servers <servers:string>", "The blossom servers to try first (comma separated).")
     .option(
       "-p, --pubkey <npub:string>",
-      "The public key to download from (npub, hex, or NIP-05 identifier like name@domain.com).",
+      "The public key to download from (npub, hex, or NIP-05 identifier like name@domain.com, or Namecoin .bit identifier like name@example.bit or d/example).",
     )
     .option(
       "-d, --name <name:string>",
