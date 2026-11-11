@@ -268,6 +268,20 @@ The `serve` command builds and serves your local nsite files, while `run` starts
 that can serve nsites locally (e.g., `npub123.localhost` for root sites,
 `{base36pubkey}{dtag}.localhost` for named sites).
 
+### Namecoin public-key inputs
+
+Commands with a `--pubkey` option accept Namecoin identifiers such as `d/example`, `id/alice`,
+`example.bit`, and `alice@example.bit`. Namecoin resolution returns an author pubkey; each command
+then keeps its existing root/named-site discovery behavior. This is NIP-05-style author discovery,
+not full `nostr.nsite` target resolution: these options do not consume a Namecoin-hosted NIP-19
+pointer to select a different author, a particular named site, or an exact event.
+
+The independent Namecoin-to-nsite mapping is specified by
+[nostr-protocol/nips#2540](https://github.com/nostr-protocol/nips/pull/2540) and the
+[NIP-N6 draft](https://github.com/mstrofnone/nips/pull/2). The `nsyte run` hostname resolver is
+unchanged by the current `--pubkey` proposal.
+
+
 ## Authentication Methods
 
 nsyte supports three ways to authenticate:
